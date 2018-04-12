@@ -16,15 +16,6 @@ mongoose.connect(Keys.mongoURI);
 
 const app = express(); //This generate a new application that represents a new instance of express.
 
-passport.use(new GoogleStrategy({
-    clientID: Keys.googleClientID,
-    clientSecret: Keys.googleClientSecret,
-    callbackURL: '/auth/google/callback'
-},
-    (accessToken) => {
-    console.log(accessToken);
-    }));
-
 //This is telling express to use cookie. The app.use wires-up a middleware for the app. Middlewares are function that intercept and  modify requests before sending them to the passport.
 app.use(
   cookieSession({
@@ -38,8 +29,6 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 
-
-app.get('/auth/google/callback', passport.authenticate('google', {scope:'https://www.googleapis.com/auth/plus.login'}));
 
 const PORT = process.env.PORT || 5000; //We added the boolean (or 5000) to accommodate for running the app locally.
 app.listen(PORT);//This line instruct express to tell node that it want to listen to traffic in port that Heroku gives us or our local port.
