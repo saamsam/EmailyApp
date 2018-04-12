@@ -16,6 +16,8 @@ passport.deserializeUser((id, done) => {
     });
 });
 
+passport.authenticate('google', {scope:'https://www.googleapis.com/auth/plus.login'});
+
 passport.use(new GoogleStrategy({
         clientID: Keys.googleClientID,
         clientSecret: Keys.googleClientSecret,
