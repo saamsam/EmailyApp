@@ -6,11 +6,15 @@ module.exports = (app) => {
         })
     );
 
-    app.get('/auth/google/callback', passport.authenticate('google'));
+    app.get('/auth/google/callback', passport.authenticate('google'),
+              (req, res) => {
+                res.redirect('/surveys');
+              }
+            );
 
     app.get('/api/logout', (req, res) => {
         req.logout(); //the logout function is one of the functions that passport attaches to the req object. The logout function will kill the cookie for that user.
-        res.send(req.user); //let user know they are logged out.
+        res.redirect('/'); //send the user back to our homepage.
 
     });
 
@@ -20,4 +24,3 @@ module.exports = (app) => {
 
 
 };
-
