@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-const Keys = require('./config/Keys.js');
+const Keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
 
