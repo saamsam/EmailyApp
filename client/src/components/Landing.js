@@ -8,7 +8,7 @@ const Landing = () => {
     <div style={{ textAlign: 'center' }}>
       <h1>SamTech Inc.!</h1>
       Welcome, We Are Glad You Are Here!
-      <div className="Carousel">
+      <div className="carousel-fixed-item center">
         <img src={Horse} />
       </div>
       <DateTime />
